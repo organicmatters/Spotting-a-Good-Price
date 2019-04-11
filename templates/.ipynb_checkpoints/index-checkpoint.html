@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      
+      <!-- Latest compiled and minified CSS for bootstrap select -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.7/dist/css/bootstrap-select.min.css">
+      
+    <!-- Latest compiled and minified CSS for datetimepicker -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
+      
+    <!-- Icons for calender-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>EC2 Price Predictor</title>
+  </head>
+  <body>
+<!-- Image and text -->
+    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+        <img src="" width="30" height="30" class="d-inline-block align-top" alt="">
+        Spot EC2 Prediction
+      </a>
+      </nav>
+    <div class="container">
+     <br>
+     <br>
+    <div class="row">
+    <div class="col-sm">
+      <form action="/predict_prices/" method="post">
+    <p>Select an Instance type:</p>
+    <select class="selectpicker" data-live-search="true" name="instance_type">
+      <optgroup label="General Purpose">
+        <option>a1.medium</option>
+        <option>a1.large</option>
+        <option>a1.xlarge</option>
+        <option>a1.2xlarge</option>
+        <option>a1.4xlarge</option>
+        <option>m4.large </option>
+        <option>m4.xlarge</option>
+        <option>m4.2xlarge</option>
+        <option>m4.4xlarge</option>
+        <option>m4.10xlarge</option>
+        <option>m4.16xlarge </option>
+        <option>m5.large </option>
+        <option>m5.xlarge</option>
+        <option>m5.2xlarge</option>
+        <option>m5.4xlarge</option>
+        <option>m5.12xlarge</option>
+        <option>m5.24xlarge</option>
+        <option>m5.metal</option>
+        <option>m5a.large</option>
+        <option>m5a.xlarge</option>
+        <option>m5a.2xlarge</option>
+        <option>m5a.4xlarge</option>
+        <option>m5a.12xlarge</option>
+        <option>m5a.24xlarge</option>
+        <option>m5d.large</option>
+        <option>m5d.xlarge</option>
+        <option>m5d.2xlarge</option>
+        <option>m5d.4xlarge</option>
+        <option>m5d.12xlarge</option>
+        <option>m5d.24xlarge</option>
+        <option>m5d.metal </option>
+        <option>t2.nano</option>
+        <option>t2.micro</option>
+        <option>t2.small</option>
+        <option>t2.medium</option>
+        <option>t2.large</option>
+        <option>t2.xlarge</option>
+        <option>t2.2xlarge </option>
+        <option>t3.nano</option>
+        <option>t3.micro</option>
+        <option>t3.small</option>
+        <option>t3.medium </option>
+        <option>t3.large</option>
+        <option>t3.xlarge</option>
+        <option>t3.2xlarge</option>
+          
+      </optgroup>
+      <optgroup label="Compute Optimized">
+        <option>c4.large</option>
+        <option>c4.xlarge</option>
+        <option>c4.2xlarge</option>
+        <option>c4.4xlarge</option>
+        <option>c4.8xlarge </option>
+        <option>c5.large</option>
+        <option>c5.xlarge</option>
+        <option>c5.2xlarge</option>
+        <option>c5.4xlarge</option>
+        <option>c5.9xlarge</option>
+        <option>c5.18xlarge</option>
+        <option>c5d.xlarge</option>
+        <option>c5d.2xlarge</option>
+        <option>c5d.4xlarge</option>
+        <option>c5d.9xlarge</option>
+        <option>c5d.18xlarge</option>
+        <option>c5n.large</option>
+        <option>c5n.xlarge</option>
+        <option>c5n.2xlarge</option>
+        <option>c5n.4xlarge</option>
+        <option>c5n.9xlarge</option>
+        <option>c5n.18xlarge</option>
+      </optgroup>
+    
+      <optgroup label="Memory Optimized">
+        <option>r4.large</option>
+        <option>r4.xlarge</option>
+        <option>r4.2xlarge</option>
+        <option>r4.4xlarge</option>
+        <option>r4.8xlarge</option>
+        <option>r4.16xlarge</option>
+        <option>r5.large</option>
+        <option>r5.xlarge </option>
+        <option>r5.2xlarge</option>
+        <option>r5.4xlarge</option>
+        <option>r5.12xlarge</option>
+        <option>r5.24xlarge</option>
+        <option>r5.metal</option>
+        <option>r5a.large</option>
+        <option>r5a.xlarge</option>
+        <option>r5a.2xlarge</option>
+        <option>r5a.4xlarge</option>
+        <option>r5a.12xlarge</option>
+        <option>r5a.24xlarge</option>
+        <option>r5d.large</option>
+        <option>r5d.xlarge</option>
+        <option>r5d.2xlarge</option>
+        <option>r5d.4xlarge</option>
+        <option>r5d.12xlarge</option>
+        <option>r5d.24xlarge</option>
+        <option>r5d.metal</option>
+        <option>u-6tb1.metal</option>
+        <option>u-9tb1.metal</option>
+        <option>u-12tb1.metal</option>
+        <option>x1.16xlarge</option>
+        <option>x1.32xlarge</option>
+        <option>x1e.xlarge</option>
+        <option>x1e.2xlarge</option>
+        <option>x1e.4xlarge</option>
+        <option>x1e.8xlarge</option>
+        <option>x1e.16xlarge</option>
+        <option>x1e.32xlarge</option>
+        <option>z1d.large</option>
+        <option>z1d.xlarge </option>
+        <option>z1d.2xlarge</option>
+        <option>z1d.3xlarge</option>
+        <option>z1d.6xlarge</option>
+        <option>z1d.12xlarge</option>
+        <option>z1d.metal</option>
+      </optgroup>
+    
+      <optgroup label="Storage Optimized">
+        <option>d2.xlarge</option>
+        <option>d2.2xlarge</option>
+        <option>d2.4xlarge</option>
+        <option>d2.8xlarge</option>
+        <option>h1.2xlarge</option>
+        <option>h1.4xlarge</option>
+        <option>h1.8xlarge</option>
+        <option> h1.16xlarge</option>
+        <option>i3.large</option>
+        <option>i3.xlarge</option>
+        <option>i3.2xlarge</option>
+        <option>i3.4xlarge</option>
+        <option>i3.8xlarge</option>
+        <option>i3.16xlarge</option>
+        <option>i3.metal</option>
+        
+        <optgroup label="Accelerated Computing">
+        <option>f1.2xlarge</option>
+        <option>f1.4xlarge</option>
+        <option>f1.16xlarge</option>
+        <option>g3s.xlarge</option>
+        <option>g3.4xlarge</option>
+        <option>g3.8xlarge</option>
+        <option>g3.16xlarge</option>
+        <option>p2.xlarge</option>
+        <option>p2.8xlarge</option>
+        <option>p2.16xlarge</option>
+        <option>p3.2xlarge</option>
+        <option>p3.8xlarge</option>
+        <option>p3.16xlarge</option>
+        <option>p3dn.24xlarge</option>
+      </optgroup>
+    </select>
+        <br>
+        <br>
+        <p>Select Starting Date:</p>  
+    <div class="form-group">
+        <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+        <input type="text" name="start_date" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
+            <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                </div>
+            </div>
+    </div>
+        <p>Select Ending Date:</p>
+        <div class="form-group">
+        <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+        <input type="text" name="end_date" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
+            <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                </div>
+            </div>
+        </div>
+        <p>Select Instance Type:</p>
+    <select class="selectpicker">
+      <option>Linux</option>
+      <option>Windows</option>
+      <option>SUSE Linux</option>
+    </select>
+    <br>
+    <br>
+        <p>Preferred Region:</p>
+    <select class="selectpicker">
+      <option>us-east-1</option>
+      <option>us-east-2</option>
+      <option>us-west-1</option>
+      <option>us-west-2</option>
+    </select>
+    <br>
+    <br>
+    <p>Preferred Availability Zone:</p>
+    <select class="selectpicker">
+      <option>A</option>
+      <option>B</option>
+    </select>
+    <br>
+    <br>
+    <button type="submit" class="btn btn-primary">Check Prices</button>
+    <div class="form-group">
+    </form>
+    </div>
+        
+    
+    <div class="col-sm">
+      Hello
+       {% if message %}
+      <h2>{{message}}</h2>
+      {% endif %}
+    </div>
+    <div class="col-sm">
+      Hi
+    </div>
+  </div>
+</div>
+      </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<!-- Latest compiled and minified JavaScript for bootstrap select-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.7/dist/js/bootstrap-select.min.js"></script>
+<!-- Latest compiled and minified JavaScript for Moment js-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
+
+<script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+</script>
+<script type="text/javascript">
+            $(function () {
+                $('#datetimepicker2').datetimepicker();
+            });
+</script>
+</head>
+  </body>
+</html>
